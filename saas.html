@@ -171,15 +171,30 @@ console-based <code class="docutils literal notranslate"><span class="pre">opera
 <p>Using the xOpera SaaS API through <code class="docutils literal notranslate"><span class="pre">curl</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">csar_base64</span><span class="o">=</span><span class="s2">&quot;$(base64 --wrap 0 test.csar)&quot;</span>
 <span class="n">api</span><span class="o">=</span><span class="s2">&quot;https://xopera-radon.xlab.si/api&quot;</span>
+<span class="n">auth_base_url</span><span class="o">=</span><span class="s2">&quot;https://openid-radon.xlab.si&quot;</span>
 <span class="n">secret_base64</span><span class="o">=</span><span class="s2">&quot;$(echo &#39;hello!&#39; | base64 -)&quot;</span>
 
 <span class="n">your_username</span><span class="o">=</span><span class="n">YOUR_USERNAME</span>
 <span class="n">your_password</span><span class="o">=</span><span class="n">YOUR_PASSWORD</span>
 
-<span class="c1"># login process (would be automated by browser)</span>
 <span class="n">alias</span> <span class="n">cookiecurl</span><span class="o">=</span><span class="s2">&quot;curl -sSL --cookie-jar cookiejar.txt --cookie cookiejar.txt&quot;</span>
-<span class="n">response</span><span class="o">=</span><span class="s2">&quot;$(cookiecurl $api/credential)&quot;</span>
-<span class="n">redirect_url</span><span class="o">=</span><span class="s2">&quot;$(echo $response | xmllint --html --xpath &quot;</span><span class="n">string</span><span class="p">(</span><span class="o">//</span><span class="n">form</span><span class="p">[</span><span class="nd">@id</span><span class="o">=</span><span class="s1">&#39;kc-form-login&#39;</span><span class="p">]</span><span class="o">/</span><span class="nd">@action</span><span class="p">)</span><span class="s2">&quot; - 2&gt;/dev/null)&quot;</span>
+<span class="n">response_from_credentials_redirected_to_next_auth</span><span class="o">=</span><span class="s2">&quot;$(cookiecurl $api/credential)&quot;</span>
+
+<span class="c1">### login flow - RADON auth ###</span>
+    <span class="n">redirect_url_to_radonauth</span><span class="o">=</span><span class="s2">&quot;$(echo $response_from_credentials_redirected_to_next_auth | xmllint --html --xpath &quot;</span><span class="n">string</span><span class="p">(</span><span class="o">//</span><span class="n">a</span><span class="p">[</span><span class="nd">@id</span><span class="o">=</span><span class="s1">&#39;zocial-keycloak-xlab-oidc-provider-to-keycloak-radon&#39;</span><span class="p">]</span><span class="o">/</span><span class="nd">@href</span><span class="p">)</span><span class="s2">&quot; - 2&gt;/dev/null)&quot;</span>
+    <span class="n">response_radonauth</span><span class="o">=</span><span class="s2">&quot;$(cookiecurl $</span><span class="si">{auth_base_url}</span><span class="s2">$</span><span class="si">{redirect_url_to_radonauth}</span><span class="s2">)&quot;</span>
+
+    <span class="n">login_url_radonauth</span><span class="o">=</span><span class="s2">&quot;$(echo $response_radonauth | xmllint --html --xpath &quot;</span><span class="n">string</span><span class="p">(</span><span class="o">//</span><span class="n">form</span><span class="p">[</span><span class="nd">@id</span><span class="o">=</span><span class="s1">&#39;kc-form-login&#39;</span><span class="p">]</span><span class="o">/</span><span class="nd">@action</span><span class="p">)</span><span class="s2">&quot; - 2&gt;/dev/null)&quot;</span>
+    <span class="n">cookiecurl</span> <span class="s2">&quot;$login_url_radonauth&quot;</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;username=$your_username&quot;</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;password=$your_password&quot;</span> <span class="o">-</span><span class="n">d</span> <span class="n">credentialId</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">redirect_url</span><span class="o">=</span><span class="s2">&quot;$redirect_url_radonauth&quot;</span>
+<span class="c1">### end RADON auth login flow ###</span>
+
+<span class="c1">### login flow - internal auth ###</span>
+    <span class="n">redirect_url_internal</span><span class="o">=</span><span class="s2">&quot;$(echo $response_from_credentials_redirected_to_next_auth | xmllint --html --xpath &quot;</span><span class="n">string</span><span class="p">(</span><span class="o">//</span><span class="n">form</span><span class="p">[</span><span class="nd">@id</span><span class="o">=</span><span class="s1">&#39;kc-form-login&#39;</span><span class="p">]</span><span class="o">/</span><span class="nd">@action</span><span class="p">)</span><span class="s2">&quot; - 2&gt;/dev/null)&quot;</span>
+    <span class="n">redirect_url</span><span class="o">=</span><span class="s2">&quot;$redirect_url_internal&quot;</span>
+<span class="c1">### end internal auth login flow ###</span>
+
+<span class="c1"># final login step, sets cookies and automatically completes the /credential request</span>
 <span class="n">cookiecurl</span> <span class="s2">&quot;$redirect_url&quot;</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;username=$your_username&quot;</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;password=$your_password&quot;</span> <span class="o">-</span><span class="n">d</span> <span class="n">credentialId</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
 
 <span class="c1"># normal usage</span>
