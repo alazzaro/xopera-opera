@@ -7,12 +7,17 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Installation &mdash; RADON  documentation</title>
+  <title>xOpera API &mdash; RADON  documentation</title>
   
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
 
   
   
@@ -32,14 +37,16 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Examples" href="examples.html" />
-    <link rel="prev" title="Business value" href="business-value.html" /> 
+    <link rel="next" title="xOpera TPS (template library)" href="template_library.html" />
+    <link rel="prev" title="xOpera SaaS" href="saas.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,15 +94,15 @@
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="business-value.html">Business value</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#install">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opera_cli.html">xOpera CLI (opera)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saas.html">xOpera SaaS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">xOpera API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="template_library.html">xOpera TPS (template library)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="saas.html">xOpera SaaS</a></li>
 </ul>
 
             
@@ -144,13 +151,13 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Installation</li>
+      <li>xOpera API</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/opera_api.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,11 +170,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="installation">
-<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>This section explains the installation of xOpera orchestrator.</p>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="xopera-api">
+<span id="opera-api"></span><h1>xOpera API<a class="headerlink" href="#xopera-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>This section explains the installation of xOpera orchestrator API.</p>
+<p><strong>Prerequisites</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">opera</span></code> requires python 3 and a virtual environment. In a typical modern
 Linux environment, we should already be set. In Ubuntu, however, we might need
 to run the following commands:</p>
@@ -175,14 +183,12 @@ to run the following commands:</p>
 $ sudo apt install -y python3-venv python3-wheel python-wheel-common
 </pre></div>
 </div>
-</div>
-<div class="section" id="install">
-<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
-<p>xOpera is distributed as Python package that is regularly published on <a class="reference external" href="https://pypi.org/project/opera/">PyPI</a>.
-So the simplest way to test <code class="docutils literal notranslate"><span class="pre">opera</span></code> is to install it into virtual environment:</p>
+<p><strong>Install</strong></p>
+<p>xOpera is distributed as Python package that is regularly published on <a class="reference external" href="https://pypi.org/project/opera-api/">PyPI</a>.
+So the simplest way to test <code class="docutils literal notranslate"><span class="pre">opera-api</span></code> is to install it into virtual environment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir ~/opera &amp;&amp; cd ~/opera
 $ python3 -m venv .venv &amp;&amp; . .venv/bin/activate
-(.venv) $ pip install opera
+(.venv) $ pip install opera-api
 </pre></div>
 </div>
 </div>
@@ -194,8 +200,8 @@ $ python3 -m venv .venv &amp;&amp; . .venv/bin/activate
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="business-value.html" class="btn btn-neutral float-left" title="Business value" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="template_library.html" class="btn btn-neutral float-right" title="xOpera TPS (template library)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="saas.html" class="btn btn-neutral float-left" title="xOpera SaaS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

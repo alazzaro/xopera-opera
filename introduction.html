@@ -13,6 +13,11 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
 
   
   
@@ -32,13 +37,15 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Business value" href="business-value.html" />
+    <link rel="next" title="Quickstart" href="quickstart.html" />
     <link rel="prev" title="Welcome to xOpera’s documentation!" href="index.html" /> 
 </head>
 
@@ -86,12 +93,17 @@
             
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="business-value.html">Business value</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#background">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parser">Parser</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opera_cli.html">xOpera CLI (opera)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="saas.html">xOpera SaaS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opera_api.html">xOpera API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_library.html">xOpera TPS (template library)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 
             
@@ -161,16 +173,79 @@
             
   <div class="section" id="introduction">
 <span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">xOpera</span></code> or shorter <code class="docutils literal notranslate"><span class="pre">opera</span></code> is an orchestration tool or orchestrator.</p>
+<p><code class="docutils literal notranslate"><span class="pre">xOpera</span> <span class="pre">project</span></code> includes a set of tools for advanced orchestration, with an orchestration tool <code class="docutils literal notranslate"><span class="pre">xOpera</span> <span class="pre">orchestrator</span></code> or shorter <code class="docutils literal notranslate"><span class="pre">opera</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">opera</span></code> aims to be a lightweight orchestrator compliant with <a class="reference external" href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=tosca">OASIS TOSCA</a>.
 and the current compliance is with the <a class="reference external" href="https://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.3/TOSCA-Simple-Profile-YAML-v1.3.html">TOSCA Simple Profile in YAML v1.3</a>.
 <code class="docutils literal notranslate"><span class="pre">opera</span></code> is by following TOSCA primarily a (TOSCA) cloud orchestrator which enables orchestration of automated tasks
 within cloud applications for different cloud providers such as Amazon Web Services(AWS), Microsoft Azure, Google Cloud
 Platform(GCP), OpenFaaS, OpenStack and so on. Apart from that this tool can be used and integrated to other infrastructures
 in order to orchestrate services or applications and therefore reduce human factor.</p>
-<p>xOpera tool is an open-source project which currently resides on GitHub inside <a class="reference external" href="https://github.com/xlab-si/xopera-opera">xopera-opera</a>
-repository. As an orchestration tool xOpera uses <a class="reference external" href="https://www.ansible.com/">Ansible automation tool</a> to implement the
-TOSCA standard and to run its operations via Ansible playbook actuators which again opens a lot of new possibilities.</p>
+<p>xOpera orchestrator engine - called xOpera library - xOpera CLI and xOpera API are an open-source project which currently reside on GitHub inside <a class="reference external" href="https://github.com/xlab-si/xopera-opera">xopera-opera</a> and <a class="reference external" href="https://www.ansible.com/">xopera-opera &lt;https://github.com/xlab-si/xopera-api&gt;`_repositories. As an orchestration tool xOpera uses `Ansible automation tool</a> to implement the TOSCA standard and to run its operations via Ansible playbook actuators which again opens a lot of new possibilities.</p>
+<div class="figure align-center" id="id3">
+<span id="xopera-architecture"></span><a class="reference external image-reference" href="_images/xopera-architecture.png"><img alt="_images/xopera-architecture.png" src="_images/xopera-architecture.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The xOpera components.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>Currently a set of components is presented in figure <a class="reference internal" href="#xopera-architecture"><span class="std std-numref">Fig. 1</span></a>, where we can point out:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt>Opera CLI</dt><dd><p>is a command line interface to the <strong>xOpera library</strong> for deploying TOSCA templates and CSARs</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Opera API</dt><dd><p>allows integration of <strong>xOpera library</strong>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>xOpera SaaS</dt><dd><p>is a standalone service for application lifecycle management with xOpera orchestrator through GUI and API.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>TPS or Template Publishing Service</dt><dd><p>is a library of published TOSCA templates and CSARs</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>Each component is covered by corresponding This documentation will cover all xOpera components.</p>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>xOpera is a TOSCA standard compliant orchestrator that is following the paradigm of having a minimal set of
+features and is currently focusing on Ansible. xOpera is following the traditional UNIX philosophy of having a tool that
+does one thing, and does it right. So, with a minimal set of features xOpera will do just the orchestration, and do it well.</p>
+<p>xOpera is available on GitHub under Apache License 2.0.</p>
+<p>TOSCA stands for the OASIS Topology and Orchestration Specification for Cloud Applications (TOSCA) standard.
+It’s an industry-developed and supported standard, still lively and fast to adopt new technologies, approaches and
+paradigms. It’s however mostly backwards compatible, so staying within the realm of TOSCA is currently a sound and,
+from the longevity perspective, a wise decision.</p>
+<p>Using the TOSCA as the system-defining language for the xOpera means that we have an overarching declarative way that
+manages the actual deployment. The Ansible playbooks are now in the role of the actuators, tools that concretise the
+declared system, its topology and contextualisation of the components and networking.</p>
+<p>This design takes the best of both worlds. TOSCA service template is a system definition, written in proverbial stone,
+while the qualities of the individual Ansible playbooks are now shining. Within the playbooks, we can now entirely focus
+on particular elements of the overall system, such as provisioning virtual machines at the cloud provider, installing
+and configuring a service on a target node, etc. xOpera, in its capacity, takes care of all the untidy inter-playbook
+coordination, state of the deployment and so on.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>More about xOpera’s background, its origins and goals can be found here: <a class="reference external" href="https://www.sodalite.eu/content/xopera-agile-orchestrator">xOpera: an agile orchestrator</a></p>
+</div>
+</div>
+<div class="section" id="parser">
+<span id="id2"></span><h2>Parser<a class="headerlink" href="#parser" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>TBD</em>: This part of the documentation will be improved in the future.</p>
+</div>
+<p>xOpera orchestrator has its own YAML and TOSCA parser which is shown on the image below <a class="reference internal" href="#opera-parser-structure"><span class="std std-ref">xOpera parser and executor</span></a>.</p>
+<div class="figure align-center" id="id4">
+<span id="opera-parser-structure"></span><a class="reference external image-reference" href="_images/opera_parser_structure.png"><img alt="_images/opera_parser_structure.png" src="_images/opera_parser_structure.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">xOpera parser and executor</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div>
 </div>
 
 
@@ -179,7 +254,7 @@ TOSCA standard and to run its operations via Ansible playbook actuators which ag
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="business-value.html" class="btn btn-neutral float-right" title="Business value" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to xOpera’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

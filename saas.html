@@ -13,6 +13,11 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
 
   
   
@@ -32,13 +37,16 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Documentation" href="documentation.html" /> 
+    <link rel="next" title="xOpera API" href="opera_api.html" />
+    <link rel="prev" title="xOpera CLI (opera)" href="opera_cli.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,14 +94,18 @@
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="business-value.html">Business value</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opera_cli.html">xOpera CLI (opera)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">xOpera SaaS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#warnings-about-your-credentials-and-general-security">Warnings about your credentials and general security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#browser-interface">Browser interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#eclipse-che-plugin-for-xopera-saas">Eclipse Che plugin for xOpera SaaS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-api">The API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#warnings-about-your-secrets-and-general-security">Warnings about your secrets and general security</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="opera_api.html">xOpera API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_library.html">xOpera TPS (template library)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 
             
@@ -163,12 +175,83 @@
             
   <div class="section" id="xopera-saas">
 <span id="saas"></span><h1>xOpera SaaS<a class="headerlink" href="#xopera-saas" title="Permalink to this headline">¶</a></h1>
-<p>The Software as a Service edition of xOpera is available at <a class="reference external" href="https://xopera-radon.xlab.si/ui/_">https://xopera-radon.xlab.si/ui/_</a>.</p>
-<p>It is a multi-user multi-platform multi-deployment multifunctional service offering all capabilities of the
-console-based <code class="docutils literal notranslate"><span class="pre">opera</span></code>, providing all of its functionalities.</p>
-<p>Please read the warnings below, as you accept some inherent risks when using xOpera-SaaS</p>
-<p>Using the browser version is straightforward.</p>
-<p>Using the xOpera SaaS API through <code class="docutils literal notranslate"><span class="pre">curl</span></code>:</p>
+<p>The Software as a Service edition of xOpera is available at <a class="reference external" href="https://xopera-radon.xlab.si/ui/">https://xopera-radon.xlab.si/ui/</a>.</p>
+<p>It is a multi-user service offering all capabilities of the console-based <cite>opera</cite>, providing all of its functionalities
+as a service of Web 3.0 where you can interact with it through the browser, or an API, if you so desire.</p>
+<p>Please read the <a class="reference internal" href="#xopera-saas-warnings">warnings</a> at the bottom, as you accept some inherent risks when using xOpera SaaS.</p>
+<div class="section" id="browser-interface">
+<h2>Browser interface<a class="headerlink" href="#browser-interface" title="Permalink to this headline">¶</a></h2>
+<p>Using the browser version is straightforward.
+Let’s go through the basic workflow, where you:</p>
+<ol class="arabic simple">
+<li><p>Have secrets you need to define prior to deployment.</p></li>
+<li><p>Author a new workspace to contain your project.</p></li>
+<li><p>Register your secrets to be available in the workspace.</p></li>
+<li><p>Use the browser to create a new xOpera project from a CSAR.</p></li>
+<li><p>Have to specify which service template and inputs you are using, then validate them.</p></li>
+<li><p>In the end, deploy the project.</p></li>
+</ol>
+<div class="figure align-center" id="id1">
+<span id="xopera-saas-secrets"></span><a class="reference external image-reference" href="_images/xopera-saas-secrets.png"><img alt="_images/xopera-saas-secrets.png" src="_images/xopera-saas-secrets.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">The secrets screen.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>The first thing we need to do is create whatever secrets are necessary for your deployment to run.
+For example, these are your cloud provider secrets, SSH public keys, among others.
+The way they are provided is through files - with each secret, you declare a file (and contents) that will be
+present in your project when you create it.</p>
+<p>Next, let’s create a workspace to contain our projects.</p>
+<div class="figure align-center" id="id2">
+<span id="xopera-saas-workspaces"></span><a class="reference external image-reference" href="_images/xopera-saas-workspaces.png"><img alt="_images/xopera-saas-workspaces.png" src="_images/xopera-saas-workspaces.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Manage numerous workspaces directly from your browser.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>Creating one is simple, you just need to choose a name.
+You are assigned owner privileges automatically, and you can share this workspace with other users, who can then
+also create projects in it.
+In <a class="reference internal" href="#xopera-saas-workspaces"><span class="std std-numref">Fig. 21</span></a>, the <cite>DemoWorkspace</cite> projects is shared with us, which we can determine by looking
+at the <em>Ownership</em> column.</p>
+<p>Sharing workspaces is done through the dropdown menu on the right, by clicking on the kebab icon.
+Sharing individual projects is not possible.
+To share a workspace with another user, use the email they used to sign in to xOpera SaaS.
+The user must have previously logged in to xOpera SaaS at least once.</p>
+<p>The next thing we need to do is to assign the secrets we created in the previous step to this workspace.
+This is the only way they are applied to projects within this workspace.
+As with sharing workspaces, this is done through the dropdown on the right of each workspace’s row.
+When you apply a secret, this is reflected in the list of workspaces.</p>
+<p>All that is left is to create and deploy a project.
+To do this, click the <span class="guilabel">Add Project</span> button, choose a name and select your CSAR file.</p>
+<div class="figure align-center" id="id3">
+<span id="xopera-saas-project"></span><a class="reference external image-reference" href="_images/xopera-saas-project.png"><img alt="_images/xopera-saas-project.png" src="_images/xopera-saas-project.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">The main xOpera SaaS project management screen.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>To deploy the project, open the management window, input your service template filename and upload your inputs file
+using the <span class="guilabel">Browse</span> button.
+You can <span class="guilabel">Run validation</span> on the service template and inputs prior to deploying as a basic sanity check.</p>
+<p>Each invocation (deployment, undeployment) has an entry in the list of invocations.
+The status and outputs are reported and updated to allow you to see the progress.
+In case of errors, you can:</p>
+<ul class="simple">
+<li><p>Run validations.</p></li>
+<li><p>Inspect the inputs, <cite>stdout</cite> and <cite>stderr</cite>.</p></li>
+<li><p>Download a debug package.</p></li>
+</ul>
+<p>The last option is the way to go if the deployment fails in an unexpected way.
+You will be served with an archive file containing the exact project structure xOpera SaaS uses for deployment,
+so you can attempt to reproduce (and hopefully, fix) the error locally.</p>
+<p>To undeploy or delete the project, press the corresponding button.</p>
+</div>
+<div class="section" id="eclipse-che-plugin-for-xopera-saas">
+<h2>Eclipse Che plugin for xOpera SaaS<a class="headerlink" href="#eclipse-che-plugin-for-xopera-saas" title="Permalink to this headline">¶</a></h2>
+<p><em>TBD</em></p>
+</div>
+<div class="section" id="the-api">
+<h2>The API<a class="headerlink" href="#the-api" title="Permalink to this headline">¶</a></h2>
+<p>A preview of the API reference is presented in <a class="reference internal" href="#xopera-saas-api-excerpt"><span class="std std-numref">Fig. 23</span></a> and the whole reference is located at the
+<a class="reference external" href="https://xopera-radon.xlab.si/apibrowser/">API page</a>.</p>
+<div class="figure align-center" id="id4">
+<span id="xopera-saas-api-excerpt"></span><a class="reference external image-reference" href="_images/xopera-saas-api.png"><img alt="images/xopera-saas-api.png" src="images/xopera-saas-api.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">An excerpt of the xOpera SaaS API.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>The following is a complete example of using the xOpera SaaS API through <code class="docutils literal notranslate"><span class="pre">curl</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">csar_base64</span><span class="o">=</span><span class="s2">&quot;$(base64 --wrap 0 test.csar)&quot;</span>
 <span class="n">api</span><span class="o">=</span><span class="s2">&quot;https://xopera-radon.xlab.si/api&quot;</span>
 <span class="n">auth_base_url</span><span class="o">=</span><span class="s2">&quot;https://openid-radon.xlab.si&quot;</span>
@@ -178,7 +261,7 @@ console-based <code class="docutils literal notranslate"><span class="pre">opera
 <span class="n">your_password</span><span class="o">=</span><span class="n">YOUR_PASSWORD</span>
 
 <span class="n">alias</span> <span class="n">cookiecurl</span><span class="o">=</span><span class="s2">&quot;curl -sSL --cookie-jar cookiejar.txt --cookie cookiejar.txt&quot;</span>
-<span class="n">response_from_credentials_redirected_to_next_auth</span><span class="o">=</span><span class="s2">&quot;$(cookiecurl $api/credential)&quot;</span>
+<span class="n">response_from_credentials_redirected_to_next_auth</span><span class="o">=</span><span class="s2">&quot;$(cookiecurl $api/secret)&quot;</span>
 
 <span class="c1">### login flow - RADON auth ###</span>
     <span class="n">redirect_url_to_radonauth</span><span class="o">=</span><span class="s2">&quot;$(echo $response_from_credentials_redirected_to_next_auth | xmllint --html --xpath &quot;</span><span class="n">string</span><span class="p">(</span><span class="o">//</span><span class="n">a</span><span class="p">[</span><span class="nd">@id</span><span class="o">=</span><span class="s1">&#39;zocial-keycloak-xlab-oidc-provider-to-keycloak-radon&#39;</span><span class="p">]</span><span class="o">/</span><span class="nd">@href</span><span class="p">)</span><span class="s2">&quot; - 2&gt;/dev/null)&quot;</span>
@@ -194,19 +277,19 @@ console-based <code class="docutils literal notranslate"><span class="pre">opera
     <span class="n">redirect_url</span><span class="o">=</span><span class="s2">&quot;$redirect_url_internal&quot;</span>
 <span class="c1">### end internal auth login flow ###</span>
 
-<span class="c1"># final login step, sets cookies and automatically completes the /credential request</span>
+<span class="c1"># final login step, sets cookies and automatically completes the /secret request</span>
 <span class="n">cookiecurl</span> <span class="s2">&quot;$redirect_url&quot;</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;username=$your_username&quot;</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;password=$your_password&quot;</span> <span class="o">-</span><span class="n">d</span> <span class="n">credentialId</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
 
 <span class="c1"># normal usage</span>
-<span class="n">cookiecurl</span> <span class="s2">&quot;$api/credential&quot;</span>
-<span class="n">cookiecurl</span> <span class="s2">&quot;$api/credential&quot;</span> <span class="o">-</span><span class="n">XPOST</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">name</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">credential1</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">path</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">/tmp/credential.txt</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">contents</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">$secret_base64</span><span class="se">\&quot;</span><span class="s2">}&quot;</span>
-<span class="n">cookiecurl</span> <span class="s2">&quot;$api/credential&quot;</span>
-<span class="n">cookiecurl</span> <span class="s2">&quot;$api/credential/1&quot;</span>
+<span class="n">cookiecurl</span> <span class="s2">&quot;$api/secret&quot;</span>
+<span class="n">cookiecurl</span> <span class="s2">&quot;$api/secret&quot;</span> <span class="o">-</span><span class="n">XPOST</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">name</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">credential1</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">path</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">/tmp/credential.txt</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">contents</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">$secret_base64</span><span class="se">\&quot;</span><span class="s2">}&quot;</span>
+<span class="n">cookiecurl</span> <span class="s2">&quot;$api/secret&quot;</span>
+<span class="n">cookiecurl</span> <span class="s2">&quot;$api/secret/1&quot;</span>
 <span class="n">cookiecurl</span> <span class="s2">&quot;$api/workspace&quot;</span>
 <span class="n">cookiecurl</span> <span class="s2">&quot;$api/workspace&quot;</span> <span class="o">-</span><span class="n">XPOST</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{&quot;name&quot;: &quot;workspace1&quot;}&#39;</span>
-<span class="n">cookiecurl</span> <span class="s2">&quot;$api/workspace/1/credential/1&quot;</span> <span class="o">-</span><span class="n">XPUT</span>
-<span class="n">cookiecurl</span> <span class="s2">&quot;$api/workspace/1/credential&quot;</span>
-<span class="n">cookiecurl</span> <span class="s2">&quot;$api/credential/1&quot;</span>
+<span class="n">cookiecurl</span> <span class="s2">&quot;$api/workspace/1/secret/1&quot;</span> <span class="o">-</span><span class="n">XPUT</span>
+<span class="n">cookiecurl</span> <span class="s2">&quot;$api/workspace/1/secret&quot;</span>
+<span class="n">cookiecurl</span> <span class="s2">&quot;$api/secret/1&quot;</span>
 <span class="n">cookiecurl</span> <span class="s2">&quot;$api/workspace/1&quot;</span>
 <span class="n">cookiecurl</span> <span class="s2">&quot;$api/workspace/1/project&quot;</span> <span class="o">-</span><span class="n">XPOST</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">name</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">myproject</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">csar</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">$csar_base64</span><span class="se">\&quot;</span><span class="s2">}&quot;</span>
 <span class="n">cookiecurl</span> <span class="s2">&quot;$api/workspace/1/project&quot;</span>
@@ -226,17 +309,20 @@ console-based <code class="docutils literal notranslate"><span class="pre">opera
 </div>
 <p>For further interaction with each project, see
 <a class="reference external" href="https://github.com/xlab-si/xopera-api/blob/master/openapi-spec.yml">the xopera-api specification</a></p>
-<div class="section" id="warnings-about-your-credentials-and-general-security">
-<h2>Warnings about your credentials and general security<a class="headerlink" href="#warnings-about-your-credentials-and-general-security" title="Permalink to this headline">¶</a></h2>
-<p>Your credentials - not for xOpera-SaaS, but those you add for services you access in CSARs etc - are stored in
-plaintext on the server xOpera-SaaS is running on.
-All assigned workspaces have access to them, as they have control of the filesystem, therefore all users with access
-to the workspace also have access to them.
-You need to use caution with the credentials you submit.</p>
-<p>If you request xOpera-SaaS server administrators to help you or access your project, they will also be in a position
-to access the credentials.
-Whenever possible, use temporary credentials with limited access to the smallest required set of capabilities
-to improve you security.</p>
+</div>
+<div class="section" id="warnings-about-your-secrets-and-general-security">
+<span id="xopera-saas-warnings"></span><h2>Warnings about your secrets and general security<a class="headerlink" href="#warnings-about-your-secrets-and-general-security" title="Permalink to this headline">¶</a></h2>
+<p>Your secrets - not for xOpera SaaS, but those you add for services you access in CSARs etc - are stored in
+plaintext on the server xOpera SaaS is running on, and retrieved on request.
+This is necessary for the execution of your orchestration actions.</p>
+<p>You need to use caution with the secrets you submit and with whom you share your workspaces.</p>
+<p>Users you share workspaces with do not get direct access to secrets.
+All projects created under the workspace have access to them, and, as users have control of the filesystem,
+they can also access the secrets by deploying a CSAR.</p>
+<p>If you request xOpera SaaS server administrators to help you or access your project, they will also be in a position
+to access the secrets.
+Whenever possible, use temporary secrets with limited access to the smallest required set of capabilities
+to improve your security.</p>
 </div>
 </div>
 
@@ -246,7 +332,8 @@ to improve you security.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="documentation.html" class="btn btn-neutral float-left" title="Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="opera_api.html" class="btn btn-neutral float-right" title="xOpera API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="opera_cli.html" class="btn btn-neutral float-left" title="xOpera CLI (opera)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

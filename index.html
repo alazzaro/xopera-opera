@@ -13,6 +13,11 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
 
   
   
@@ -32,6 +37,8 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -86,11 +93,12 @@
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="business-value.html">Business value</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opera_cli.html">xOpera CLI (opera)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="saas.html">xOpera SaaS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opera_api.html">xOpera API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_library.html">xOpera TPS (template library)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 
             
@@ -165,28 +173,59 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="business-value.html">Business value</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#install">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#background">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#parser">Parser</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#screencast-video">Screencast video</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#quickstart-and-hello-world">Quickstart and hello world</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#openstack-client-setup">OpenStack client setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#outputs">Outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#opera-cli-quickstart">Opera CLI Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#xopera-saas-quickstart">xOpera SaaS Quickstart</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documentation.html#background">Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documentation.html#parser">Parser</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documentation.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opera_cli.html">xOpera CLI (opera)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opera_cli.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opera_cli.html#secrets-and-environment-variables">Secrets and Environment variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opera_cli.html#cli-reference-and-examples">CLI reference and examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="opera_cli.html#deploy">deploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opera_cli.html#undeploy">undeploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opera_cli.html#validate">validate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opera_cli.html#outputs">outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opera_cli.html#info">info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opera_cli.html#package">package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opera_cli.html#unpackage">unpackage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opera_cli.html#init-deprecated-since-0-6-1">init (deprecated since 0.6.1)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="saas.html">xOpera SaaS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="saas.html#warnings-about-your-credentials-and-general-security">Warnings about your credentials and general security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saas.html#browser-interface">Browser interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saas.html#eclipse-che-plugin-for-xopera-saas">Eclipse Che plugin for xOpera SaaS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saas.html#the-api">The API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saas.html#warnings-about-your-secrets-and-general-security">Warnings about your secrets and general security</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="opera_api.html">xOpera API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opera_api.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="template_library.html">xOpera TPS (template library)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#private-cloud">Private cloud</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#openstack-client-setup">OpenStack client setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#public-cloud">Public cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#serverless">Serverless</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#screencast-video">Screencast video</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#hpc">HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#more-tempaltes-and-blueprints">More tempaltes and blueprints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#tosca-csar">TOSCA CSAR</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -195,6 +234,8 @@
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Carbonell, Maria: xOpera: an agile orchestrator: <a class="reference external" href="https://www.sodalite.eu/content/xopera-agile-orchestrator">https://www.sodalite.eu/content/xopera-agile-orchestrator</a></p></li>
+<li><p>Cankar, Matija et. al.: Auto-scaling Using TOSCA Infrastructure as Code: <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-030-59155-7_20">https://link.springer.com/chapter/10.1007/978-3-030-59155-7_20</a></p></li>
+<li><p>Luzar, Anže et. al.: Examination and Comparison of TOSCA Orchestration Tools: <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-030-59155-7_19">https://link.springer.com/chapter/10.1007/978-3-030-59155-7_19</a></p></li>
 </ul>
 </div>
 <div class="section" id="contact">
