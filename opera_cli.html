@@ -806,7 +806,7 @@ can be formatted in YAML or JSON. The created json object looks like this:</p>
 <p><strong>Usage</strong></p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">package</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">service</span><span class="o">-</span><span class="n">template</span> <span class="n">SERVICE_TEMPLATE</span><span class="p">]</span>
-                     <span class="p">[</span><span class="o">--</span><span class="n">output</span> <span class="n">OUTPUT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="nb">format</span> <span class="p">{</span><span class="nb">zip</span><span class="p">,</span><span class="n">tar</span><span class="p">}]</span>
+                     <span class="p">[</span><span class="o">--</span><span class="n">output</span> <span class="n">OUTPUT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="nb">format</span> <span class="p">{</span><span class="nb">zip</span><span class="p">,</span><span class="n">tar</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
                      <span class="n">service_template_folder</span>
 </pre></div>
 </div>
@@ -831,6 +831,10 @@ can be formatted in YAML or JSON. The created json object looks like this:</p>
 <dd><p>Possible choices: zip, tar</p>
 <p>CSAR compressed file format</p>
 <p>Default: “zip”</p>
+</dd>
+<dt><kbd>--verbose, -v</kbd></dt>
+<dd><p>Turns on verbose mode</p>
+<p>Default: False</p>
 </dd>
 </dl>
 </div>
