@@ -13,10 +13,7 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
-  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
-  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
-  <link rel="stylesheet" href="_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
   <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
 
   
@@ -37,8 +34,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
-        <script src="_static/sphinx_tabs/tabs.js"></script>
+        <script src="_static/tabs.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
     
@@ -332,7 +328,9 @@ currently allows users to execute the following commands:</p>
 </tr>
 </tbody>
 </table>
-<p>The commands can be executed in a random order and the orchestrator will warn  and the orchestrator will warn you in case if any problems. Each CLI command is described more in detail in the following sections.</p>
+<p>The commands can be executed in a random order and the orchestrator will warn and the orchestrator will warn you
+in case if any problems.
+Each CLI command is described more in detail in the following sections.</p>
 <div class="section" id="deploy">
 <h3>deploy<a class="headerlink" href="#deploy" title="Permalink to this headline">¶</a></h3>
 <p><strong>Name</strong></p>
@@ -387,25 +385,7 @@ currently allows users to execute the following commands:</p>
 </div>
 </div></blockquote>
 <div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-0-0 docutils container">
-<div class="docutils container">
-<p>Example</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-0-1 docutils container">
-<div class="docutils container">
-<p>Source</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-0-2 docutils container">
-<div class="docutils container">
-<p>Details</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
-<p>A simple deployment of TOSCA service template is shown on the next image (<a class="reference internal" href="#opera-deploy-service-template-svg"><span class="std std-numref">Fig. 4</span></a>).</p>
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Example</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Source</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Details</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>A simple deployment of TOSCA service template is shown on the next image (<a class="reference internal" href="#opera-deploy-service-template-svg"><span class="std std-numref">Fig. 4</span></a>).</p>
 <div class="figure align-center" id="id1">
 <span id="opera-deploy-service-template-svg"></span><a class="reference external image-reference" href="_images/opera_deploy_service_template.svg"><img alt="_images/opera_deploy_service_template.svg" src="_images/opera_deploy_service_template.svg" width="100%" /></a>
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Example of <a class="reference external" href="https://github.com/xlab-si/xopera-opera/tree/master/examples/hello">hello world</a> template opera deployment.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
@@ -425,9 +405,7 @@ yes/no prompts).</p>
 <span id="opera-deploy-csar-svg"></span><a class="reference external image-reference" href="_images/opera_deploy_csar.svg"><img alt="_images/opera_deploy_csar.svg" src="_images/opera_deploy_csar.svg" width="100%" /></a>
 <p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">The <a class="reference external" href="https://github.com/xlab-si/xopera-opera/tree/master/docs/files/csars/big/big.csar">big CSAR</a> example deployment.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
-<p>CLI instructions for example</p>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>CLI instructions for example</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> xopera-opera/examples/hello
 opera deploy service.yaml
 opera undeploy
@@ -437,9 +415,7 @@ opera undeploy
 <p class="admonition-title">Hint</p>
 <p>Instead of <code class="docutils literal notranslate"><span class="pre">service.yaml</span></code> you can deploy a compressed TOSCA CSAR directly with <code class="docutils literal notranslate"><span class="pre">deploy</span></code> command.</p>
 </div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
-<p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">deploy</span></code> command is used to initiate the deployment
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">deploy</span></code> command is used to initiate the deployment
 orchestration process using the supplied TOSCA service template or the
 compressed TOSCA CSAR. Within this CLI command the xOpera orchestrator
 invokes multiple <a class="reference external" href="https://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.3/cos01/TOSCA-Simple-Profile-YAML-v1.3-cos01.html#_Toc26969470">TOSCA interface operations</a>
@@ -465,8 +441,7 @@ changed using the <code class="docutils literal notranslate"><span class="pre">-
 <li><p><code class="docutils literal notranslate"><span class="pre">instances</span></code> folder - includes JSON files that carry the information about the status of TOSCA node and relationship instances</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">csars</span></code> folder contains the extracted copy of your CSAR (created only if you deployed the compressed TOSCA CSAR)</p></li>
 </ul>
-</div>
-</div>
+</div></div>
 </div>
 <div class="section" id="undeploy">
 <h3>undeploy<a class="headerlink" href="#undeploy" title="Permalink to this headline">¶</a></h3>
@@ -505,25 +480,7 @@ changed using the <code class="docutils literal notranslate"><span class="pre">-
 </div>
 </div></blockquote>
 <div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-1-0 docutils container">
-<div class="docutils container">
-<p>Example</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-1-1 docutils container">
-<div class="docutils container">
-<p>Source</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-1-2 docutils container">
-<div class="docutils container">
-<p>Details</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
-<p>A simple undeployment process of TOSCA service template is shown on the
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Example</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Source</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">Details</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>A simple undeployment process of TOSCA service template is shown on the
 next image (<a class="reference internal" href="#opera-undeploy-svg"><span class="std std-numref">Fig. 6</span></a>). The service template should
 be deployed first and the you can undeploy the solution.</p>
 <div class="figure align-center" id="id3">
@@ -541,9 +498,7 @@ flag is used.</p>
 <span id="opera-undeploy-csar-svg"></span><a class="reference external image-reference" href="_images/opera_undeploy_csar.svg"><img alt="_images/opera_undeploy_csar.svg" src="_images/opera_undeploy_csar.svg" width="100%" /></a>
 <p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">The undeployment of the <a class="reference external" href="https://github.com/xlab-si/xopera-opera/tree/master/docs/files/csars/big/big.csar">big CSAR example</a>.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-1 docutils container">
-<p>CLI instructions for example</p>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p>CLI instructions for example</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> xopera-opera/examples/hello
 opera deploy service.yaml
 opera undeploy
@@ -555,9 +510,7 @@ opera undeploy -r
 <p class="admonition-title">Hint</p>
 <p>Instead of <code class="docutils literal notranslate"><span class="pre">service.yaml</span></code> you can deploy a compressed TOSCA CSAR directly with <code class="docutils literal notranslate"><span class="pre">deploy</span></code> command.</p>
 </div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-2 docutils container">
-<p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">undeploy</span></code> command is used to tear down the deployed blueprint.
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">undeploy</span></code> command is used to tear down the deployed blueprint.
 Within the undeployment process the xOpera orchestrator invokes two TOSCA
 Standard interface node operations in the following order:</p>
 <ol class="arabic simple">
@@ -566,8 +519,7 @@ Standard interface node operations in the following order:</p>
 </ol>
 <p>The operation gets executed if it is defined within the TOSCA service template
 and has a link to the corresponding Ansible playbook.</p>
-</div>
-</div>
+</div></div>
 </div>
 <div class="section" id="validate">
 <h3>validate<a class="headerlink" href="#validate" title="Permalink to this headline">¶</a></h3>
@@ -600,25 +552,7 @@ and has a link to the corresponding Ansible playbook.</p>
 </dd>
 </dl>
 <div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-2-0 docutils container">
-<div class="docutils container">
-<p>Example</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-2-1 docutils container">
-<div class="docutils container">
-<p>Source</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-2-2 docutils container">
-<div class="docutils container">
-<p>Overview</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 active docutils container">
-<p>The first image below (<a class="reference internal" href="#opera-validate-service-template-svg"><span class="std std-numref">Fig. 8</span></a>) shows an example of
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Example</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Source</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">Overview</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p>The first image below (<a class="reference internal" href="#opera-validate-service-template-svg"><span class="std std-numref">Fig. 8</span></a>) shows an example of
 TOSCA service template validation.</p>
 <div class="figure align-center" id="id5">
 <span id="opera-validate-service-template-svg"></span><a class="reference external image-reference" href="_images/opera_validate_service_template.svg"><img alt="_images/opera_validate_service_template.svg" src="_images/opera_validate_service_template.svg" width="100%" /></a>
@@ -630,9 +564,7 @@ TOSCA zipped CSAR validation where orchestration YAML inputs file is also suppli
 <span id="opera-validate-csar-svg"></span><a class="reference external image-reference" href="_images/opera_validate_csar.svg"><img alt="_images/opera_validate_csar.svg" src="_images/opera_validate_csar.svg" width="100%" /></a>
 <p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Example showing <a class="reference external" href="https://github.com/xlab-si/xopera-opera/tree/master/docs/files/csars/big/big.csar">big</a> CSAR validation.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
-<p>CLI instructions for example</p>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p>CLI instructions for example</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> xopera-opera/examples/attribute_mapping
 opera validate service yaml
 
@@ -643,14 +575,11 @@ opera validate -i inputs.yaml big.csar
 <p class="admonition-title">Hint</p>
 <p>Instead of <code class="docutils literal notranslate"><span class="pre">service.yaml</span></code> you can deploy a compressed TOSCA CSAR directly with <code class="docutils literal notranslate"><span class="pre">deploy</span></code> command.</p>
 </div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-2 docutils container">
-<p>With <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">validate</span></code> you can validate any TOSCA template or CSAR and
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><p>With <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">validate</span></code> you can validate any TOSCA template or CSAR and
 find out whether it’s properly structured and deployable by opera. At the
 end of this operation you will receive the validation result where opera
 will warn you about TOSCA template inconsistencies if there was any.</p>
-</div>
-</div>
+</div></div>
 </div>
 <div class="section" id="outputs">
 <h3>outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">¶</a></h3>
@@ -681,20 +610,7 @@ will warn you about TOSCA template inconsistencies if there was any.</p>
 </div>
 </div></blockquote>
 <div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-3-0 docutils container">
-<div class="docutils container">
-<p>Example</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-3-1 docutils container">
-<div class="docutils container">
-<p>Details</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-0 active docutils container">
-<p>The image below (<a class="reference internal" href="#opera-outputs-service-template-svg"><span class="std std-numref">Fig. 10</span></a>) shows an
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">Example</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">Details</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><p>The image below (<a class="reference internal" href="#opera-outputs-service-template-svg"><span class="std std-numref">Fig. 10</span></a>) shows an
 example of retrieving the orchestration outputs after the deployment process.</p>
 <div class="figure align-center" id="id7">
 <span id="opera-outputs-service-template-svg"></span><a class="reference external image-reference" href="_images/opera_outputs_service_template.svg"><img alt="_images/opera_outputs_service_template.svg" src="_images/opera_outputs_service_template.svg" width="100%" /></a>
@@ -708,13 +624,10 @@ After that the outputs are retrieved and formatted in JSON (using <code class="d
 <span id="opera-outputs-csar-svg"></span><a class="reference external image-reference" href="_images/opera_outputs_csar.svg"><img alt="_images/opera_outputs_csar.svg" src="_images/opera_outputs_csar.svg" width="100%" /></a>
 <p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Example showing <a class="reference external" href="https://github.com/xlab-si/xopera-opera/tree/master/docs/files/csars/small/small.csar">small CSAR</a> deployment and outputs retrieval.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-1 docutils container">
-<p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">outputs</span></code> command lets you access the orchestration outputs
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">outputs</span></code> command lets you access the orchestration outputs
 defined in the TOSCA service template and print them out to the console
 in JSON or YAML format.</p>
-</div>
-</div>
+</div></div>
 </div>
 <div class="section" id="info">
 <h3>info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h3>
@@ -754,20 +667,7 @@ in JSON or YAML format.</p>
 </div>
 </div></blockquote>
 <div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-4-0 docutils container">
-<div class="docutils container">
-<p>Example</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-4-1 docutils container">
-<div class="docutils container">
-<p>Details</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-0 active docutils container">
-<p>A minimal <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">info</span></code> example is shown on the image below (<a class="reference internal" href="#opera-info-minimal-svg"><span class="std std-numref">Fig. 12</span></a>).
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">Example</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">Details</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><p>A minimal <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">info</span></code> example is shown on the image below (<a class="reference internal" href="#opera-info-minimal-svg"><span class="std std-numref">Fig. 12</span></a>).
 The service template is deployed first with the debug mode turned on
 (<code class="docutils literal notranslate"><span class="pre">--verbose/-v</span></code> flag is used, which prints out the inputs and the
 Ansible playbook tasks outputs). Then <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">info</span></code> command is used to
@@ -790,9 +690,7 @@ out in both YAML and JSON formats (here <code class="docutils literal notranslat
 <span id="opera-info-full-svg"></span><a class="reference external image-reference" href="_images/opera_info_full.svg"><img alt="_images/opera_info_full.svg" src="_images/opera_info_full.svg" width="100%" /></a>
 <p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">The opera info testing on the <a class="reference external" href="https://github.com/xlab-si/xopera-opera/tree/master/docs/files/csars/smal/small.csar">small TOSCA CSAR example</a>.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-1 docutils container">
-<p>With <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">info</span></code> user can get the information about the current opera
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><p>With <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">info</span></code> user can get the information about the current opera
 project and can access its storage and state. This included printing out
 the path to TOSCA service template entrypoint, extracted CSAR location,
 path to the storage inputs and status/state of the deployment. The output
@@ -805,8 +703,7 @@ can be formatted in YAML or JSON. The created json object looks like this:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
+</div></div>
 </div>
 <div class="section" id="package">
 <h3>package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h3>
@@ -849,20 +746,7 @@ can be formatted in YAML or JSON. The created json object looks like this:</p>
 </div>
 </div></blockquote>
 <div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-5-0 docutils container">
-<div class="docutils container">
-<p>Example</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-5-1 docutils container">
-<div class="docutils container">
-<p>Details</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5-0 active docutils container">
-<p>A minimal <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">package</span></code> example is shown on the image below
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">Example</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">Details</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><p>A minimal <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">package</span></code> example is shown on the image below
 (<a class="reference internal" href="#opera-package-minimal-svg"><span class="std std-numref">Fig. 14</span></a>). The CSAR is created without any
 optional params and current folder (.) is passed as a source dir. Opera
 then looks for the root level yaml (<code class="docutils literal notranslate"><span class="pre">service.yaml</span></code>) and takes it as
@@ -888,9 +772,7 @@ both times.</p>
 <span id="opera-package-full-svg"></span><a class="reference external image-reference" href="_images/opera_package_full.svg"><img alt="_images/opera_package_full.svg" src="_images/opera_package_full.svg" width="100%" /></a>
 <p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Running opera package on the <a class="reference external" href="https://github.com/xlab-si/xopera-opera/tree/master/tests/integration">opera integration tests CSAR examples</a>.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5-1 docutils container">
-<p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">package</span></code> command is used to create a valid TOSCA CSAR - a
+</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">package</span></code> command is used to create a valid TOSCA CSAR - a
 deployable zip (or tar) compressed archive file. TOSCA CSARs contain the
 blueprint of the application that we want to deploy. The process includes
 packaging together the TOSCA service template and all the accompanying
@@ -905,8 +787,7 @@ temporary directory. And if not, the files are copied to the tempdir,
 where the CSAR structure is created and at the end the tempdir is
 compressed. The input folder is the mandatory positional argument, but
 there are also other command flags that can be used.</p>
-</div>
-</div>
+</div></div>
 </div>
 <div class="section" id="unpackage">
 <h3>unpackage<a class="headerlink" href="#unpackage" title="Permalink to this headline">¶</a></h3>
@@ -939,20 +820,7 @@ there are also other command flags that can be used.</p>
 </dd>
 </dl>
 <div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-6-0 docutils container">
-<div class="docutils container">
-<p>Example</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-6-1 docutils container">
-<div class="docutils container">
-<p>Details</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6-0 active docutils container">
-<p>A minimal example of <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">unpackage</span></code> is shown on the image below
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-6-6-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-6-6-0" name="6-0" role="tab" tabindex="0">Example</button><button aria-controls="panel-6-6-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-1" name="6-1" role="tab" tabindex="-1">Details</button></div><div aria-labelledby="tab-6-6-0" class="sphinx-tabs-panel" id="panel-6-6-0" name="6-0" role="tabpanel" tabindex="0"><p>A minimal example of <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">unpackage</span></code> is shown on the image below
 (<a class="reference internal" href="#opera-unpackage-minimal-svg"><span class="std std-numref">Fig. 16</span></a>). The CSAR is unpacked without any
 of the available optional params. The CSAR format is automatically
 detected and the radon dirname with UUID is created for the destionation
@@ -974,9 +842,7 @@ file which is specific for the TOSCA CSARs.</p>
 <span id="opera-unpackage-full-svg"></span><a class="reference external image-reference" href="_images/opera_unpackage_full.svg"><img alt="_images/opera_unpackage_full.svg" src="_images/opera_unpackage_full.svg" width="100%" /></a>
 <p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Running opera unpackage on the <a class="reference external" href="https://github.com/xlab-si/xopera-opera/tree/master/examples/hello">hello world example</a>.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6-1 docutils container">
-<p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">unpackage</span></code> has the opposite function of the <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">package</span></code>
+</div><div aria-labelledby="tab-6-6-1" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-1" name="6-1" role="tabpanel" tabindex="0"><p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">unpackage</span></code> has the opposite function of the <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">package</span></code>
 command. It  serves for unpacking (i.e. validating and extracting) the
 compressed TOSCA CSAR files. The opera unpackage command receives a
 compressed CSAR as a positional argument. It then validates and extracts
@@ -985,8 +851,7 @@ the CSAR to a given location.</p>
 format (that will be used to extract the CSAR) is determined
 automatically. Currently, the compressed CSARs can be supplied in two
 different compression formats - <cite>zip</cite> or <cite>tar</cite>.</p>
-</div>
-</div>
+</div></div>
 </div>
 <div class="section" id="init-deprecated-since-0-6-1">
 <h3>init (deprecated since 0.6.1)<a class="headerlink" href="#init-deprecated-since-0-6-1" title="Permalink to this headline">¶</a></h3>
@@ -1025,20 +890,7 @@ different compression formats - <cite>zip</cite> or <cite>tar</cite>.</p>
 </div>
 </div></blockquote>
 <div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-7-0 docutils container">
-<div class="docutils container">
-<p>Example</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-7-1 docutils container">
-<div class="docutils container">
-<p>Details</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7-0 active docutils container">
-<p>The image below (<a class="reference internal" href="#opera-init-service-template-svg"><span class="std std-numref">Fig. 18</span></a>) shows an
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-7-7-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-7-7-0" name="7-0" role="tab" tabindex="0">Example</button><button aria-controls="panel-7-7-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-1" name="7-1" role="tab" tabindex="-1">Details</button></div><div aria-labelledby="tab-7-7-0" class="sphinx-tabs-panel" id="panel-7-7-0" name="7-0" role="tabpanel" tabindex="0"><p>The image below (<a class="reference internal" href="#opera-init-service-template-svg"><span class="std std-numref">Fig. 18</span></a>) shows an
 example of initializing the TOSCA service template and then deploying it.
 To save the orchestration data we created a custom folder (using the
 <code class="docutils literal notranslate"><span class="pre">--instance-path/-p</span> <span class="pre">option</span></code>) instead of the default <code class="docutils literal notranslate"><span class="pre">.opera</span></code>.</p>
@@ -1053,9 +905,7 @@ along with its <a class="reference external" href="https://github.com/xlab-si/xo
 <span id="opera-init-csar-svg"></span><a class="reference external image-reference" href="_images/opera_init_csar.svg"><img alt="_images/opera_init_csar.svg" src="_images/opera_init_csar.svg" width="100%" /></a>
 <p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Initialization and deployment of <a class="reference external" href="https://github.com/xlab-si/xopera-opera/tree/master/docs/files/csars/small/small.csar">small CSAR example</a>.</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
 </div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7-1 docutils container">
-<p>The deprecated <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">init</span></code> command is used to initialize the
+</div><div aria-labelledby="tab-7-7-1" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-1" name="7-1" role="tabpanel" tabindex="0"><p>The deprecated <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">init</span></code> command is used to initialize the
 deployment. It either takes a TOSCA template file or a compressed (zipped
 CSAR) file (and an optional YAML file with inputs).</p>
 <p>When the compressed CSAR is provided to the <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">init</span></code> command it is
@@ -1075,8 +925,7 @@ template/CSAR).</p>
 <div class="deprecated">
 <p><span class="versionmodified deprecated">Deprecated since version 0.6.1.</span></p>
 </div>
-</div>
-</div>
+</div></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">init</span></code> command is deprecated and will probably be removed
