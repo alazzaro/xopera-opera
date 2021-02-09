@@ -1,5 +1,8 @@
 version: "2.1"
 
+orbs:
+  codecov: codecov/codecov@1.0.2
+
 commands:
   common_setup:
     description: Prepare the repository for work
@@ -17,6 +20,14 @@ commands:
       - run: make unit_test
       - run: make integration_test
       - run: make examples_test
+
+  run_code_coverage:
+    description: Calculate code coverage and push results to codecov
+    steps:
+      - checkout
+      - run: make code_coverage
+      - codecov/upload:
+          file: coverage.xml
 
   run_integration_tests_using_released_opera_version:
     description: Test xOpera CLI commands with testing service template
@@ -102,6 +113,10 @@ jobs:
     executor: python38
     steps:
       - run_tests
+  code_coverage:
+    executor: python37
+    steps:
+      - run_code_coverage
   nightly_xopera_test:
     executor: python37
     steps:
@@ -134,11 +149,13 @@ workflows:
       - test36
       - test37
       - test38
+      - code_coverage
       - pypi_test_deploy:
           requires:
             - test36
             - test37
             - test38
+            - code_coverage
           context: opera-test-pypi
           filters:
             branches:

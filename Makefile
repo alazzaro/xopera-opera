@@ -14,6 +14,8 @@ BUILDDIR      = docs/_build
 # Point pipenv to the right file since we can execute tests from a subdir.
 export PIPENV_PIPFILE := $(realpath Pipfile)
 
+COVERAGE_PATH ?= coverage.xml
+
 .PHONY: init
 init:
 	pipenv install --dev
@@ -21,6 +23,10 @@ init:
 .PHONY: unit_test
 unit_test:
 	pipenv run pytest tests/unit
+
+.PHONY: code_coverage
+code_coverage:
+	pipenv run pytest --cov=opera --cov-report=xml tests/unit/
 
 .PHONY: fix
 fix:
